@@ -29,3 +29,10 @@ INSERT into nn_ex_3 VALUES(null),('664445444848');
 SELECT * from nn_ex_3
 
 set search_path to daily;
+
+drop table if EXISTS nn_ex_4; 
+CREATE table nn_ex_4(
+	created_on TIMESTAMP not NULL DEFAULT CURRENT_TIMESTAMP 
+);
+INSERT into nn_ex_4 DEFAULT VALUES;
+SELECT * from nn_ex_4
