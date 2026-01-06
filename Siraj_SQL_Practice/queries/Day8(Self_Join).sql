@@ -52,3 +52,55 @@ on
 ORDER by    
     e.dept_id,e.emp_name
 limit 100;
+
+-- Find pairs of cities in the same state
+set search_path to customers;
+
+select 
+count(*) 
+FROM
+    "customers"."addresses" c1
+join 
+    "customers"."addresses" c2
+on 
+    c1.state=c2.state
+    and c1.city<>c2.city
+where c1.state='Bihar'
+limit 100
+
+-- Using CTE
+
+with 
+    distinct_city as (
+        select DISTINCT state,city from "customers"."addresses"
+    )
+select 
+c1.city,c2.city
+FROM
+    distinct_city c1
+join 
+    distinct_city c2
+on 
+    c1.state=c2.state
+    and c1.city>c2.city
+
+
+-- Indentifies senior junior pairs within each department
+
+select * from "stores"."employees"
+
+SELECT
+e.emp_name as senior,
+e.salary as senior_salary,
+s.emp_name as junior,
+s.salary as junior_salary
+FROM
+    "stores"."employees" as e
+JOIN
+    "stores"."employees" as s 
+on 
+    e.dept_id=s.dept_id
+    and e.store_id=s.store_id
+    and e.salary>s.salary
+ORDER by 
+    e.emp_name
