@@ -54,3 +54,100 @@ from sales.order_items
 
 
 -- Find employees whose salary is above average of their department(correlated)
+set search_path to stores
+select 
+* 
+from 
+stores.employees
+
+select 
+dept_id,
+avg(salary)
+from 
+stores.employees
+GROUP by dept_id
+
+select 
+emp_id,
+emp_name,
+dept_id,
+salary
+from 
+stores.employees as o_e
+where salary>(
+    select avg(i_e.salary)
+    from stores.employees as i_e
+    where o_e.dept_id=i_e.dept_id
+)
+order by o_e.dept_id
+
+
+-- find stores whose total sales are above the average sales across all stores(hard)
+step 1 = average sales across all the stores
+step 2 = compare the sales of each store with average STORAGE
+
+SELECT
+store_id,
+sum(total_amount)
+FROM 
+sales.orders
+GROUP by store_id
+
+SELECT * from sales.orders as o 
+
+SELECT 
+    avg(total_sales)
+FROM
+(
+    SELECT store_id, sum(total_amount) as total_sales
+    FROM sales.orders
+    GROUP by store_id
+)o
+
+
+SELECT store_id, sum(total_amount) as total_sales
+FROM sales.orders
+GROUP by store_id
+having sum(total_amount)>(
+    SELECT avg(total_sales) 
+    FROM
+    (
+        SELECT store_id, sum(total_amount) as total_sales
+        FROM sales.orders
+        GROUP by store_id
+    )o
+)
+
+
+-- Find employees who are the highest earners in  their department
+
+
+select 
+* 
+from 
+stores.employees
+
+select 
+dept_id,sum(salary)
+from 
+stores.employees
+GROUP BY dept_id
+
+
+
+-- 
+select 
+emp_id,
+emp_name,
+dept_id,
+salary
+from 
+stores.employees as o_e
+where salary=(
+    select max(i_e.salary)
+    from stores.employees as i_e
+    where o_e.dept_id=i_e.dept_id
+)
+order by o_e.dept_id
+
+
