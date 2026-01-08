@@ -48,4 +48,3 @@ with store_revenue as (
 )
 select * from store_revenue
 
-
