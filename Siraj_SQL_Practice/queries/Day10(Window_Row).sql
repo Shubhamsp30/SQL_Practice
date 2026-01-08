@@ -71,6 +71,54 @@ select
 prod_name,
 category,
 price,
-row_number() over(partition by category order by price) as category_price
+row_number() over(partition by category order by price) as rnk_in_cat
 from products.products
+
+
+-- using subquery
+select * from (
+  select 
+    prod_name,category,price,
+    row_number() over(partition by category order by price) as rnk_in_cat
+from products.products
+)
+where rnk_in_cat in(1,2,3)
+
+-- using CTE
+
+with ranked_category as (
+    select 
+        prod_name,category,price,
+        row_number() over(partition by category order by price) as rnk_in_cat
+    from products.products
+)select * from ranked_category where rnk_in_cat in(2)
+
+
+-- 2nd hightest salary per department
+
+select 
+*
+FROM
+stores.employees
+
+select 
+emp_name,
+dept_id,
+salary,
+row_number() over(PARTITION by dept_id order by salary)
+from stores.employees
+
+
+select 
+*
+FROM(
+    select 
+        emp_name,
+        dept_id,
+        salary,
+        row_number() over(PARTITION by dept_id order by salary desc ) as rnk_salary
+    from stores.employees
+)where rnk_salary=2
+
+
 
