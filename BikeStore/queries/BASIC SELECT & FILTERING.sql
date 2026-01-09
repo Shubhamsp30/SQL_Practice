@@ -97,21 +97,27 @@ where last_name like 'S%'
 -- 12. List orders not yet shipped.
 select * from orders
 select * from customers
-select 
-*FROM
-orders
-where shipped_date = NULL
+SELECT *
+FROM orders
+WHERE shipped_date IS NULL;
+
 
 
 -- 13. Find products not sold yet.
 select * from products
 select * from stocks
 
-select 
-DISTINCT 
-product_id
-from stocks
+SELECT *
+FROM products
+WHERE product_id NOT IN (
+    SELECT DISTINCT product_id
+    FROM order_items
+);
 
 
-14. Show customers from multiple cities using IN.
-15. Find orders placed in the last 30 days.
+-- 14. Show customers from multiple cities using IN.
+SELECT *
+FROM customers
+WHERE city IN ('New York', 'Chicago', 'San Diego');
+
+
