@@ -1,0 +1,68 @@
+-- Easy
+set search_path to daily
+-- Display all customers.
+select * from 
+daily.customers
+
+
+-- Show customer first name, last name, and city.
+select 
+first_name,last_name,city
+from daily.customers
+
+
+-- List all products with price greater than 500.
+select * from daily.products
+
+select *
+from daily.products
+where list_price>500
+
+
+-- Find customers from a specific state.
+select 
+* 
+from customers
+
+select DISTINCT state from customers
+
+select 
+customer_id,first_name,last_name,state  
+from 
+customers
+group by customer_id,state
+order by state 
+
+
+-- Show orders placed after a given date.
+select * FROM orders
+where order_date>'2016-02-01'
+
+
+-- Medium
+-- 6. Display customers whose phone number is NULL.
+select 
+*
+FROM
+customers
+where phone='NULL' 
+
+
+-- 7. Show products belonging to a specific category.
+select * from categories
+select * from products
+
+SELECT
+p.product_id,
+p.product_name,
+c.category_id,
+c.category_name
+from categories as c 
+join products as p 
+on c.category_id=p.category_id
+
+
+
+8. Find orders placed by a specific customer.
+9. List products with price between 500 and 1500.
+10. Display staff working in a specific store.
