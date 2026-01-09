@@ -1,5 +1,5 @@
 -- Easy
-set search_path to daily
+
 -- Display all customers.
 select * from 
 daily.customers
