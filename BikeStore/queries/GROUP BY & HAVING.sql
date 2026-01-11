@@ -76,8 +76,8 @@ order by category_id asc
 
 
 -- 10. Find staff handling more than 20 orders.
-
-
+select * from orders
+select DISTINCT staff_id,count(order_id) as no_of_orders from orders  group by staff_id
 
 -- Advanced
 -- 11. Customers whose total spending > average spending.
