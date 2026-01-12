@@ -85,17 +85,101 @@ select store_name,count(order_id) as total_orders from stores as s join orders a
 
 -- Advanced
 -- 11. Find total revenue per store.
-select 
+select * from stores
+select * from products
+select * from order_items;
+select * from orders;
+select o.store_id,s.store_name,sum(ot.quantity*ot.list_price*(1-ot.discount)) from orders as o
+join order_items as ot on o.order_id=ot.order_id
+join Stores as s on o.store_id=s.store_id
+group by o.store_id,s.store_name
 
 
 -- 12. Find total revenue per customer.
+Select * from order_items;
+select * from products;
+select * from orders
+
 -- 13. Show best-selling products.
+select * from order_items;
+select * from products;
+select distinct ot.product_id,p.product_name,count(ot.order_id),sum(ot.quantity*ot.list_price*(1-ot.discount)) as total_sales from products as p join order_items as ot on p.product_id=ot.product_id
+group by ot.product_id,p.product_name 
+order by total_sales  DESC
+
+
 -- 14. Find category-wise revenue.
+select * from categories;
+select * from products
+select DISTINCT c.category_id,count(p.product_id)as count_product,sum(p.list_price) as revenue from products as p join categories as c on p.category_id=c.category_id
+group by c.category_id
+order by c.category_id desc 
+
 -- 15. Show staff performance (orders handled).
+
+
 
 -- Interview
 -- 16. Customers who never placed an order.
+select * from customers
+select DISTINCT customer_id from customers
+select * from orders
+select DISTINCT order_id from orders
+select * from orders;
+select * from customers
+
+
+select c.customer_id,c.first_name,c.last_name
+from 
+    customers as c 
+left join 
+    orders as o
+on 
+    c.customer_id=o.customer_id 
+where order_id IS NULL
+
+SELECT 
+    customer_id,
+    first_name,
+    last_name
+FROM customers
+WHERE customer_id NOT IN (
+    SELECT customer_id FROM orders
+);
+
 -- 17. Products never sold.
+select * from order_items;
+select * from products;
+select * from orders;
+select order_id,product_id,product_name from Products as p left join orders as o p.
+
+select p.product_id,p.product_name 
+from 
+products as p 
+left join 
+order_items as ot on
+p.product_id=ot.product_id 
+where ot.product_id is NULL
+
+
 -- 18. Stores with no stock.
+select * from stocks;
+select * from stores
+select 
+    s.store_id,s.store_name
+FROM stores as s 
+left join stocks as st
+on s.store_id=st.store_id 
+where st.store_id is null 
+
+SELECT 
+    s.store_id,
+    s.store_name
+FROM stores s
+LEFT JOIN stocks st
+ON s.store_id = st.store_id
+WHERE st.store_id IS NULL;
+
+
 -- 19. Staff who never handled orders.
--- 20. Customers ordering from multiple stores.
+-- 20. Customers ordering from multiple stores
