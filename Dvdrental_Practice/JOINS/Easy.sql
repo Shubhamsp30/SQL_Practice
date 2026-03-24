@@ -1,5 +1,5 @@
 -- ✅ EASY LEVEL (15 Questions)
--- Show films where release_year = 2006
+Show films where release_year = 2006
 select * from film where release_year=2006
 
 -- Show actors where actor_id > 50
@@ -43,3 +43,5 @@ select min(amount)from payment
 
 -- Show average length from film
 select avg(length)from film
+
+
