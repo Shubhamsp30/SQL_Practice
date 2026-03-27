@@ -86,13 +86,19 @@ select staff_id,sum(amount) as total_payment from payment group by staff_id ORDE
 select count(payment_id) as total_payment from payment GROUP by staff_id order by total_payment DESC limit 1
 
 -- Show customers with payments in last 30 days
-select * from payment
-select EXTRACT(day from payment_date) as date from payment
+SELECT *
+FROM payment
+WHERE payment_date >= CURRENT_DATE - INTERVAL '30 days';
 
 -- Show films whose rental_rate > avg of their category
+select * from film_category;
+select * from film;
 
-
--- Show customers who paid more than customer 1
+SELECT * FROM film f
+JOIN film_category fc
+ON f.film_id = fc.film_id 
+where rental_rate>( select avg(f.rental_rate) as avg_rental from 
+film as f join film_category as fc on f.film_id=fc.film_id )
 
 
 -- Show films with same length as another film
