@@ -132,4 +132,12 @@ film as f join film_category as fc on f.film_id=fc.film_id )
 
 
 -- Show actors who worked in most films
-select * from 
+SELECT a.actor_id,
+       a.first_name,
+       COUNT(fa.film_id) AS film_count
+FROM actor a
+JOIN film_actor fa
+ON a.actor_id = fa.actor_id
+GROUP BY a.actor_id, a.first_name
+ORDER BY film_count DESC
+LIMIT 1;
