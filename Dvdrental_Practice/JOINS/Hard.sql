@@ -111,16 +111,28 @@ film as f join film_category as fc on f.film_id=fc.film_id )
 
 
 -- Show film with highest rental count
+select * from film;
+select * from inventory;
+select * from rental;
 
 
 -- Show category with lowest films
-
+select * from film_category;
+select * from film;
+SELECT c.name,
+       COUNT(fc.film_id) AS film_count
+FROM film_category fc
+JOIN category c
+ON fc.category_id = c.category_id
+GROUP BY c.name
+ORDER BY film_count ASC
+LIMIT 1;
 
 -- Show customers who never rented
 select * from customer;
 select * from rental
 
-
+select * from customer as c left JOIN rental as r on c.customer_id=r.customer_id where r.rental_id is NULL 
 
 -- Show films with no inventory
 select * from inventory;
