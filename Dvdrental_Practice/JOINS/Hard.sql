@@ -117,19 +117,31 @@ film as f join film_category as fc on f.film_id=fc.film_id )
 
 
 -- Show customers who never rented
+select * from customer;
+select * from rental
+
 
 
 -- Show films with no inventory
-
+select * from inventory;
+select * from film;
+select * from film as f left join inventory as i on f.film_id=i.film_id where i.film_id is null 
 
 -- Show customers with max payment per store
+select * from store
+select * from payment;
+select * from customer
 
 
 -- Show payment rank per customer
+select * from payment;
 
 
 -- Show films with replacement_cost above avg
-
+select * from film
+select DISTINCT replacement_cost from film
+select avg(replacement_cost) as avg from film
+select * from film where replacement_cost>(select avg(replacement_cost) as avg from film)
 
 -- Show actors who worked in most films
 SELECT a.actor_id,
