@@ -81,6 +81,7 @@ limit 1
 -- Show films rented more than 10 times
 select * from inventory;
 select * from rental;
+
 SELECT f.film_id,
        f.title,
        COUNT(r.rental_id) AS rent_count
