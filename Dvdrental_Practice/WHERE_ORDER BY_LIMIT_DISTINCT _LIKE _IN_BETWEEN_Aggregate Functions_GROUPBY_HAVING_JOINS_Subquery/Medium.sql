@@ -89,7 +89,9 @@ select c.country,cc.city from city as cc join country as c on cc.country_id=c.co
 -- Show customers with total payment > 150
 select * from customer;
 select * from payment
-select customer_id,sum(amount) as total_payment from payment group by customer_id having sum(amount)>150 order by total_payment desc
+select customer_id,sum(amount) as total_payment from payment 
+group by customer_id having sum(amount)>150 
+order by total_payment desc
 
 -- Show films where rental_rate = max rental_rate
 select * from film where rental_rate=(select max(rental_rate)from film)
@@ -109,7 +111,8 @@ HAVING COUNT(*) > 10;
 select * from actor; 
 select * from film_actor;
 select * from film;
-select a.actor_id,a.first_name,count(fa.film_id) as film_count from actor as a join film_actor as fa on a.actor_id=fa.actor_id group by a.actor_id having count(fa.film_id)>5
+select a.actor_id,a.first_name,count(fa.film_id) as film_count from actor as a join film_actor as fa on a.actor_id=fa.actor_id 
+group by a.actor_id having count(fa.film_id)>5
 
 -- Show film with highest replacement_cost
 select * from film 
