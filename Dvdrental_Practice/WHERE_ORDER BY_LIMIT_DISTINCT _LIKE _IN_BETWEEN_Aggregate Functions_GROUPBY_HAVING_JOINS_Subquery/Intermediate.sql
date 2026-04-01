@@ -1,15 +1,19 @@
 -- ✅ INTERMEDIATE LEVEL (15 Questions)
 -- Show number of films for each rating
-select rating,count(*) as Count_of_rating from film group by rating
+select rating,count(*) as Count_of_rating from film 
+group by rating
 
 -- Show average rental_rate for each rating
-select rating, avg(rental_rate) avg_rate from film group by rating
+select rating, avg(rental_rate) avg_rate from film 
+group by rating
 
 -- Show total payment for each customer_id
-select customer_id,sum(amount) total_payment from payment GROUP by customer_id
+select customer_id,sum(amount) total_payment from payment 
+GROUP by customer_id
 
 -- Show count of payments for each staff_id
-select staff_id,count(payment_id) count_of_payment from payment group by staff_id
+select staff_id,count(payment_id) count_of_payment from payment
+group by staff_id
 
 -- Show films where rental_rate > 2 ORDER BY length
 select * from film where rental_rate>2 order by length 
@@ -27,7 +31,8 @@ select * from film order by length desc limit 8
 select DISTINCT rating from film ORDER by rating 
 
 -- Show total payment amount > 50 per customer (use GROUP BY)
-select customer_id,sum(amount) total_payment from payment GROUP by customer_id having sum(amount)>50
+select customer_id,sum(amount) total_payment 
+from payment GROUP by customer_id having sum(amount)>50
 
 -- Show number of rentals per inventory_id
 select * from rental
