@@ -1,4 +1,5 @@
 -- ✅ EASY LEVEL (15 Questions)
+
 Show films where release_year = 2006
 select * from film where release_year=2006
 
