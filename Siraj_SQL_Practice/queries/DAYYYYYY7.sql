@@ -11,7 +11,6 @@ customers.customers as c
 on 
 o.cust_id=c.cust_id
 
-
 -- fetch order items with corresponding product name 
 
 SELECT * FROM"products"."products";
@@ -43,8 +42,6 @@ left join
 on s.store_id=e.store_id
 group by s.store_id,s.store_name,e.emp_id,e.emp_name
 order by s.store_id asc;
-
-
 
 select 
 count(s.store_id),
