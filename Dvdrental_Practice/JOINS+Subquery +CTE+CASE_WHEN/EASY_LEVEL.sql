@@ -11,19 +11,6 @@ select first_name,store_id from customer
 
 -- Show payment amount with customer name
 
-
--- Show film title with rental_rate
-
-
--- Show city name with country_id
-
-
--- Show address with city_id
-
-
--- Show film title with category_id
-
-
 -- Show actor name with actor_id
 
 
