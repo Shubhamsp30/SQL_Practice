@@ -33,9 +33,13 @@ select * from customer as c left JOIN payment as p on c.customer_id=p.customer_i
 
 
 -- Show actors not assigned to any film
+select * from film_actor;
+select * from actor;
+select * from 
 
 
 -- Show customers whose payment > overall avg payment
+select * from payment;
 
 
 -- Show category with highest number of films
