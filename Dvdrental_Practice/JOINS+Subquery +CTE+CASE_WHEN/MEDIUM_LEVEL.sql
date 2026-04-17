@@ -44,9 +44,6 @@ select * from film as f left join film_actor as fa on f.film_id=fa.film_id left 
 -- Show category with highest number of films
 
 
--- Show customers with more rentals than average rentals
-
-
 -- Show films rented more than average rental count
 
 
