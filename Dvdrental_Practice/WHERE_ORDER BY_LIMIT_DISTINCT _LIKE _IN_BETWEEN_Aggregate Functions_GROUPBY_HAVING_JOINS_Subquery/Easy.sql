@@ -9,12 +9,6 @@ select * from actor where actor_id>50
 -- Show payments where amount < 2
 select * from payment where amount<2
 
--- Show films ordered by title
-select * from film order by title
-
--- Show customers ordered by last_name DESC
-select * from customer order by last_name desc
-
 -- Show first 7 customers using LIMIT
 select * from customer limit 7
 
