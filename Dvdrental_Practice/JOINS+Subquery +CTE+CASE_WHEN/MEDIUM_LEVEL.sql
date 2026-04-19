@@ -39,7 +39,12 @@ select * from actor;
 select * from film as f left join film_actor as fa on f.film_id=fa.film_id left join actor as a 
 
 -- Show customers whose payment > overall avg payment
+select * from payment;
 
+select customer_id,sum(amount) as total_payment from payment 
+group by customer_id having sum(amount)>
+(select avg(total)from
+(select sum(amount) as total from payment GROUP by customer_id))
 
 -- Show category with highest number of films
 
