@@ -47,36 +47,47 @@ group by customer_id having sum(amount)>
 (select sum(amount) as total from payment GROUP by customer_id))
 
 -- Show category with highest number of films
+select * from film;
+select * from film_category;
+select * from category
 
+select c.name,count(fc.category_id) as number_of_film from film as f 
+left join film_category as fc on f.film_id=fc.film_id 
+left join category as c on fc.category_id=c.category_id 
+group by c.NAME
+order by number_of_film desc 
 
 -- Show films rented more than average rental count
-
-
--- Show staff with highest total payment handled
-
-
--- Show films where rental_rate > avg of their category
+select * from film; 
+select avg(rental_rate)from film; 
+select * from film where rental_rate>(select avg(rental_rate)from film)
 
 
 -- Show customers categorized using CASE → VIP / Regular / Low
+select * from customer
+select * from payment
+select customer_id,sum(amount) as total from payment group by customer_id order by total desc
 
+select customer_id,sum(amount)as total_payment,
+case
+    when sum(amount)<60 then 'Low'
+    when sum(amount)>60 and sum(amount)<150 then'Regular'
+    else 'VIP'
+    end 
+from payment  
+GROUP by customer_id
 
 -- Show films categorized using CASE → Long / Medium / Short
+select * from film 
 
+select *,length,
+case 
+    when length<=65 then 'short'
+    when length>=65 and length<=140 then 'Medium'
+    else 'Long'
+    END
+from film
 
 -- Show customers whose total payment between 100 and 200
+select customer_id,sum(amount) as total_payment from payment group by customer_id having sum(amount) between 100 and 200 
 
-
--- Show film with highest rental count
-
-
--- Show customers with max payment per store
-
-
--- Show actors who worked in more than 5 films
-
-
--- Show films with replacement_cost above avg
-
-
--- Show customers whose rental count > 10
