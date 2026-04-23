@@ -4,7 +4,9 @@
 -- Show customer name with total payment (JOIN + GROUP)
 select * from payment;
 select * from customer
-select c.first_name,sum(p.amount) as total_payment from payment as p join customer as c on p.customer_id=c.customer_id GROUP by c.first_name
+select c.first_name,sum(p.amount) as total_payment
+from payment as p join customer as c on p.customer_id=c.customer_id 
+GROUP by c.first_name
 
 -- Show film title with total rentals
 
