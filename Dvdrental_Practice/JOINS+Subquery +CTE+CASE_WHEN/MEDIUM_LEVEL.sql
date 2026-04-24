@@ -110,5 +110,7 @@ END
 from film
 
 -- Show customers whose total payment between 100 and 200
-select customer_id,sum(amount) as total_payment from payment group by customer_id having sum(amount) between 100 and 200 
+select customer_id,sum(amount) as total_payment 
+from payment group by customer_id 
+having sum(amount) between 100 and 200 
 
