@@ -31,7 +31,9 @@ select * from film as f where length>(select avg(length)from film where rating=f
 
 select * from customer;
 select * from payment
-select * from customer as c left JOIN payment as p on c.customer_id=p.customer_id where p.customer_id is NULL
+select * from customer as c 
+left JOIN payment as p on c.customer_id=p.customer_id
+where p.customer_id is NULL
 
 
 -- Show actors not assigned to any film
@@ -86,7 +88,8 @@ HAVING COUNT(r.rental_id) > (
 -- Show customers categorized using CASE → VIP / Regular / Low
 select * from customer
 select * from payment
-select customer_id,sum(amount) as total from payment group by customer_id order by total desc
+select customer_id,sum(amount) as total 
+from payment group by customer_id order by total desc
 
 SELECT customer_id,
        SUM(amount) AS total_payment,
