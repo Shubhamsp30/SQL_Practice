@@ -38,7 +38,9 @@ WHERE f.length > a.avg_len;
 -- Show customers who never made any rental (LEFT JOIN)
 select * from rental;
 select * from customer;
-select * from customer as c left join rental as r on c.customer_id=r.customer_id where r.rental_id is null 
+select * from customer as c 
+left join rental as r on c.customer_id=r.customer_id 
+where r.rental_id is null 
 
 
 -- Show films that are never rented (LEFT JOIN)
@@ -131,7 +133,9 @@ HAVING COUNT(*) > 1;
 -- Show films not present in inventory
 select * from film;
 select * from inventory;
-select * from film as f left join inventory as i on f.film_id=i.film_id where i.film_id is null 
+select * from film as f 
+left join inventory as i on f.film_id=i.film_id 
+where i.film_id is null 
 
 -- Show customer with max payment per store (PARTITION logic allowed)
 WITH customer_payment AS (
